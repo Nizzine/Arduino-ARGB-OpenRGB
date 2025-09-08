@@ -1,19 +1,40 @@
-# Control ARGB LEDs real-time over USB with Arduino via OpenRGB
-Arduino or other MCU to OpenRG.
+# Arduino ↔ OpenRGB ARGB Controller
 
-Don't have ARGB connector on your motherboard or want to use OpenRGB to control some other lights in REAL-TIME? No problem.
+Control ARGB LED strips via Arduino (Nano, RP2040, etc.) over USB, using OpenRGB. Great if your motherboard lacks ARGB headers or you want custom zones.
 
 I'll explain below how I achieved a working solution how to control ARGB LEDS with Arduino Nano (clone) via OpenRGB.
-I'll try to make this as beginner friendly as possible.
+I'll try to make this as beginner friendly as possible, but Quick Start for non-beginners also exists.
 More of the technical details are towards the end.
 
 Important notice: I only learned this stuff by trial and error. I do not know how to fix probably any of the issues you might have, so please, find your way to Google if you encounter problems not addressed here.
 
 ### We're using (tested, working solution):
+- Windows environment.
 - Arduino Nano (clone) or any other microcontroller (MCU) such as Raspberry Pi RP2040 (Pico).
 - Arduino IDE and OpenRGB.
 - ARGB LED strips or computer fans/lights with ARGB connectors. 5 volts.
 - External 5 volt power supply.
+
+## Quick Start for non-beginners
+
+1. Flash the `NanoARGB.ino` sketch in this repo to your microcontroller using **Arduino IDE**.
+2. Wire your LED strip(s):
+   - Data pin → (Nano D2 or RP2040 pin)
+   - Connect **common ground** between PSU, microcontroller, and LED strip(s)
+   - Use a dedicated 5 V PSU rated 2× the max current (e.g., 5 V/6 A)
+3. In **OpenRGB**, go to **Serial Devices** and add:
+   - Port: e.g., `COM3`
+   - Baud: `115200`
+   - LED count: total number of LEDs in your script (e.g., `30`)
+   - Protocol: **KeyboardVisualizer**
+4. Press “OK” and apply an effect. Your strip should light up!
+
+---
+**Protocol options**:
+  - `KeyboardVisualizer`: expects packets starting with `0xAA`, followed by RGB buffer and checksum.
+  - `Adalight`: starts with `"Ada"` header, simplified framing.
+  - You can switch by changing the protocol in the OpenRGB UI—but make sure your sketch matches.
+
 
 ## Preparation (Beginners):
 1. Get Arduino IDE and OpenRGB.
@@ -29,7 +50,7 @@ If problems arise at this stage, Google is your friend.
 2. Scroll down to Serial Devices and add a new device:
 Add the port of your microcontroller seen in Arduino IDE. (COM5 or something).
 Check the Baud (baudrate) of your microcontroller in Arduino IDE. 115200 is a good number.
-TOTAL number of leds your system has. Put in 60 for now. Otherwise this should be not higher than 10 if you don't have external power supply. More about that later.
+TOTAL number of leds your system has. Put 10. If you need more, then check Wiring / Hardware below.
 Important notice! Arduino cannot handle more than few leds, so either you need to make sure that the script you are running, reduces the brightness of the leds at least to half or you need a separate power supply for the LEDS. More about the wiring these later.
 Protocol: Keyboard visualizer.
 You can use Adalight if you have written the main script using it instead of FastLED and it should work. I haven't tested.
@@ -43,7 +64,7 @@ You can't upload scripts to your board from Arduino IDE if OpenRGB is open.
 
 ### Setting up the Script
 
-Simply download or copy the NanoARGB script and change the variables to your needs.
+Simply download or copy the NanoARGB.ino script and change the variables to your needs.
 
 
 ## Technical Babble About The Script
@@ -127,6 +148,8 @@ FastLED.setMaxPowerInVoltsAndMilliamps(5, 1500); // e.g., 1.5A budget
 ```c
 FastLED.setDither(0);
 ```
+### Arduino IDE gives exitcode 1 when trying to upload script
+- Exit OpenRGB. From the hidden icons too.
 
 ### Animations are delayed
 You're most likely asking too much from your microcontroller.
