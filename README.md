@@ -114,19 +114,19 @@ WS2812/“5 V ARGB” worst case ≈ 60 mA/LED @ full-white.
 If you cap brightness to ~30–40%, typical draw is ~1.3–1.8 A.
 
 ### Wiring that actually works (order matters)
-Use a proper 5 V DC supply, not a phone charger. (Look for regulated bricks / Mean Well style.)
-Common ground is mandatory: connect PSU GND ↔ MCU GND ↔ LED GND (star or short ground bus). No common ground = unstable data.
-Power LEDs directly from the PSU, not from the Nano/Pico 5 V pin.
-Cut USB 5 V back-feed if you also power the MCU from the LED PSU.
-Easiest: leave MCU on USB only, LEDs on PSU, share GND only.
-If you must feed MCU from the PSU 5 V pin, do not also have USB 5 V connected (use a data-only cable or a Schottky diode on 5 V).
-Thick, short power leads to the strip(s): 18–20 AWG. Avoid skinny JST pigtails for the main feed.
-Power injection: with 15–20 LEDs per segment you’ll still benefit from:
-Inject 5 V/GND at the start of each strip, and optionally at the far end if whites look pink/yellow.
-Bulk caps: put a 1000 µF (or bigger) 6.3 V+ electrolytic across 5 V<->GND at the start of each strip.
-Data line resistor: 330–470 Ω in series at the strip DIN to tame ringing.
-Level shifting (RP2040 only): RP2040 data is 3.3 V, strips want ~5 V logic. Many “work”, but it’s marginal, especially when V drops. Use a 74AHCT125/74HCT14 (AHCT preferred). Nano is 5 V, so this isn’t needed there.
-Ground reference for data: keep data and its ground bundled; don’t run data long by itself.
+Use a proper 5 V DC supply, not a phone charger. (Look for regulated bricks / Mean Well style.).  
+Common ground is mandatory: connect PSU GND ↔ MCU GND ↔ LED GND (star or short ground bus). No common ground = unstable data.  
+Power LEDs directly from the PSU, not from the Nano/Pico 5 V pin.  
+Cut USB 5 V back-feed if you also power the MCU from the LED PSU.  
+Easiest: leave MCU on USB only, LEDs on PSU, share GND only.  
+If you must feed MCU from the PSU 5 V pin, do not also have USB 5 V connected (use a data-only cable or a Schottky diode on 5 V).  
+Thick, short power leads to the strip(s): 18–20 AWG. Avoid skinny JST pigtails for the main feed.  
+Power injection: with 15–20 LEDs per segment you’ll still benefit from:  
+Inject 5 V/GND at the start of each strip, and optionally at the far end if whites look pink/yellow.  
+Bulk caps: put a 1000 µF (or bigger) 6.3 V+ electrolytic across 5 V<->GND at the start of each strip.  
+Data line resistor: 330–470 Ω in series at the strip DIN to tame ringing.  
+Level shifting (RP2040 only): RP2040 data is 3.3 V, strips want ~5 V logic. Many “work”, but it’s marginal, especially when V drops. Use a 74AHCT125/74HCT14 (AHCT preferred). Nano is 5 V, so this isn’t needed there.  
+Ground reference for data: keep data and its ground bundled; don’t run data long by itself.  
 
 
 ## Troubleshooting
