@@ -3,7 +3,9 @@
 Control ARGB LED strips via Arduino (Nano, RP2040, etc.) over USB, using OpenRGB. Great if your motherboard lacks ARGB headers or you want custom zones.
 
 I'll explain below how I achieved a working solution how to control ARGB LEDS with Arduino Nano (clone) via OpenRGB.
+
 I'll try to make this as beginner friendly as possible, but Quick Start for non-beginners also exists.
+
 More of the technical details are towards the end.
 
 Important notice: I only learned this stuff by trial and error. I do not know how to fix probably any of the issues you might have, so please, find your way to Google if you encounter problems not addressed here.
