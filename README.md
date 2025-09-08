@@ -115,6 +115,8 @@ Use this or what ever your microcontoller supports. You might be able to check i
 Always make sure you update the OpenRGB side of the LED amount matches what is in your script.
 
 ## Wiring / Hardware
+[Picture of default wiring with one strip goes here]
+*explanation of common wiring*
 
 So, you want more LEDs?
 
