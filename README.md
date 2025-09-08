@@ -49,23 +49,31 @@ If problems arise at this stage, Google is your friend.
 2. Scroll down to Serial Devices and add a new device:  
 -Add the port of your microcontroller seen in Arduino IDE e.g., `COM3`  
 -Check the Baud (baudrate) of your microcontroller in Arduino IDE. `115200` is a good number.  
--TOTAL number of leds your system has. Put 10. If you need more, then check Wiring / Hardware below.  
+-TOTAL number of leds your system has. Put `30`. If you need more, then check Wiring / Hardware below.  
 Important notice! Arduino cannot handle more than few leds, so either you need to make sure that the script you are running, reduces the brightness of the leds at least to half or you need a separate power supply for the LEDS. More about the wiring these later.  
 -Protocol: Keyboard visualizer.  
 
 3. Save and exit OpenRGB software.  
 
-funfact: OpenRGB does not actually know if there is a microcontroller or anything on the other side of the USB cable, this just sets up a serial port to send it to.
+funfact: OpenRGB does not actually know if there is a microcontroller or anything on the other side of the USB cable, this just sets up a serial port to send it to.  
 There won't be errors or crashing of OpenRGB if you decide to pull your microcontoller out randomly.
 
-Important notice episode 2 - The return of exitcode 1:
-You can't upload scripts to your board from Arduino IDE if OpenRGB is open.
+Important notice episode 2 - The return of exitcode 1:  
+You can't upload scripts to your board from Arduino IDE if OpenRGB is open.  
 
 ### Setting up the Script
 
 Simply download or copy the NanoARGB.ino script and change the variables to your needs.
 
+### And the final steps!
+If your script has now uploaded without erros, it's time to open OpenRGB again.  
+In the Devices tab you should now be able to see your device with the name you gave it.  
+The LEDs behave as a single long strip, but this can be changed by segmenting it to. This happens from "Zone". Press Edit button and start adding segments.  
+The total amount of leds segments should add up to the value on top of the window.  
+Go to Effects tab and add whatever effects you want the strips / fans / whathaveyou to display. You should be able to see the segments, if not, then restart OpenRGB.
 
+
+---
 ## Technical Babble About The Script
 
 The script works by taking what ever raw serial data OpenRGB sends to Arduino, Pico, or whatever you are using for it to be decoded by the microcontoller.
