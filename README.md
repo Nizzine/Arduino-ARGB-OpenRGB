@@ -49,11 +49,11 @@ If problems arise at this stage, Google is your friend.
 ### Setting up OpenRGB
 1. Open OpenRGB and go to settings tab.  
 2. Scroll down to Serial Devices and add a new device:  
--Add the port of your microcontroller seen in Arduino IDE e.g., `COM3`  
--Check the Baud (baudrate) of your microcontroller in Arduino IDE. `115200` is a good number.  
--TOTAL number of leds your system has. Put `30`. If you need more, then check Wiring / Hardware below.  
+- Add the port of your microcontroller seen in Arduino IDE e.g., `COM3`  
+- Check the Baud (baudrate) of your microcontroller in Arduino IDE. `115200` is a good number.  
+- TOTAL number of leds your system has. Put `30`. If you need more, then check Wiring / Hardware below.  
 Important notice! Arduino cannot handle more than few leds, so either you need to make sure that the script you are running, reduces the brightness of the leds at least to half or you need a separate power supply for the LEDS. More about the wiring these later.  
--Protocol: Keyboard visualizer.  
+- Protocol: Keyboard visualizer.  
 
 3. Save and exit OpenRGB software.  
 
