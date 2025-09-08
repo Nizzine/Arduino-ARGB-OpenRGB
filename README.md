@@ -1,10 +1,8 @@
 # Arduino ↔ OpenRGB ARGB Controller
 
-Control ARGB LED strips via Arduino (Nano, RP2040, etc.) over USB, using OpenRGB. Great if your motherboard lacks ARGB headers or you want custom zones.
-
-I'll explain below how I achieved a working solution how to control ARGB LEDS with Arduino Nano (clone) via OpenRGB.
-
-I'll try to make this as beginner friendly as possible, but Quick Start for non-beginners also exists.
+Control ARGB LED strips via Arduino (Nano, RP2040, etc.) over USB, using OpenRGB. Great if your motherboard lacks ARGB headers or you want custom zones.  
+I'll explain below how I achieved a working solution how to control ARGB LEDS with Arduino Nano (clone) via OpenRGB.  
+I'll try to make this as beginner friendly as possible, but Quick Start for non-beginners also exists.  
 
 More of the technical details are towards the end.
 
@@ -21,14 +19,14 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
 
 1. Flash the `NanoARGB.ino` sketch in this repo to your microcontroller using **Arduino IDE**.
 2. Wire your LED strip(s):
-   - Data pin → (Nano D2 or RP2040 pin)
-   - Connect **common ground** between PSU, microcontroller, and LED strip(s)
-   - Use a dedicated 5 V PSU rated 2× the max current (e.g., 5 V/6 A)
+- Data pin → (Nano D2 or RP2040 pin)
+- Connect **common ground** between PSU, microcontroller, and LED strip(s)
+- Use a dedicated 5 V PSU rated 2× the max current (e.g., 5 V/6 A)
 3. In **OpenRGB**, go to **Serial Devices** and add:
-   - Port: e.g., `COM3`
-   - Baud: `115200`
-   - LED count: total number of LEDs in your script (e.g., `30`)
-   - Protocol: **KeyboardVisualizer**
+- Port: e.g., `COM3`
+- Baud: `115200`
+- LED count: total number of LEDs in your script (e.g., `30`)
+- Protocol: **KeyboardVisualizer**
 4. Press “OK” and apply an effect. Your strip should light up!
 
 **Protocol options**:
@@ -107,6 +105,8 @@ Use this or what ever your microcontoller supports. You might be able to check i
 Always make sure you update the OpenRGB side of the LED amount matches what is in your script.
 
 ## Wiring / Hardware
+
+So, you want more LEDs?
 
 ### Power math (so you size things right)
 WS2812/“5 V ARGB” worst case ≈ 60 mA/LED @ full-white.
