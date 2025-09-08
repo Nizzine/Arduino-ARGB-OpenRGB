@@ -40,7 +40,7 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
 ## Preparation (Beginners):
 1. Get Arduino IDE and OpenRGB.
 2. Make sure your board is detected in Arduino IDE. If you have ESP8622 or just some random board, that should work, check out this article how to add other board managers to Arduino IDE:
-[[https://support.arduino.cc/hc/en-us/articles/360016466340-Add-third-party-platforms-to-the-Boards-Manager-in-Arduino-IDE]]
+https://support.arduino.cc/hc/en-us/articles/360016466340-Add-third-party-platforms-to-the-Boards-Manager-in-Arduino-IDE
 3. In Arduino IDE, go to Library Manager and download FastLED library.
 4. Test that your microcontroller is working correctly, Arduino, Raspberry, what have you. Verify it by uploading blink or other example sketch to your board.
 If problems arise at this stage, Google is your friend.
