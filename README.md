@@ -17,6 +17,8 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
 
 ## Quick Start for non-beginners
 
+Make sure FastLED library is installed.
+
 1. Flash the `NanoARGB.ino` sketch in this repo to your microcontroller using **Arduino IDE**.
 2. Wire your LED strip(s):
 - Data pin → (Nano D2 or RP2040 pin)
