@@ -31,13 +31,12 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
    - Protocol: **KeyboardVisualizer**
 4. Press “OK” and apply an effect. Your strip should light up!
 
----
 **Protocol options**:
   - `KeyboardVisualizer`: expects packets starting with `0xAA`, followed by RGB buffer and checksum.
   - `Adalight`: starts with `"Ada"` header, simplified framing.
   - You can switch by changing the protocol in the OpenRGB UI—but make sure your sketch matches.
 
-
+---
 ## Preparation (Beginners):
 1. Get Arduino IDE and OpenRGB.
 2. Make sure your board is detected in Arduino IDE. If you have ESP8622 or just some random board, that should work, check out this article how to add other board managers to Arduino IDE:
