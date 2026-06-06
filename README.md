@@ -14,13 +14,15 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
 - Arduino IDE and OpenRGB.
 - ARGB LED strips or computer fans/lights with ARGB connectors. 5 volts.
 - External 5 volt power supply.
+- For Arduino (and similar, not RPI) 10µF electrolytic capacitor between GND  and RESET pin (After uploading code) (minus to GND). 
 
 ## Quick Start for non-beginners
 
 Make sure FastLED library is installed.
 
 1. Flash the `NanoARGB.ino` sketch in this repo to your microcontroller using **Arduino IDE**.
-2. Wire your LED strip(s):
+- For Arduino (and similar, not RPI) Recommended: 10µF electrolytic capacitor between GND and RESET pin (After uploading code) (minus to GND).
+3. Wire your LED strip(s):
 - Data pin → (Nano D2 or RP2040 pin)
 - Connect **common ground** between PSU, microcontroller, and LED strip(s)
 - Use a dedicated 5 V PSU rated 2× the max current (e.g., 5 V/6 A)
@@ -135,10 +137,16 @@ If you must feed MCU from the PSU 5 V pin, do not also have USB 5 V connected (u
 Thick, short power leads to the strip(s): 18–20 AWG. Avoid skinny JST pigtails for the main feed.  
 Power injection: with 15–20 LEDs per segment you’ll still benefit from:  
 Inject 5 V/GND at the start of each strip, and optionally at the far end if whites look pink/yellow.  
-Bulk caps: put a 1000 µF (or bigger) 6.3 V+ electrolytic across 5 V<->GND at the start of each strip.  
-Data line resistor: 330–470 Ω in series at the strip DIN to tame ringing.  
+Bulk caps: put a 100 µF (or bigger) 6.3 V+ electrolytic across 5 V<->GND at the start of each strip.  
+Data line resistor: 330–470 Ω in series at the board DIN to tame ringing.  
 Level shifting (RP2040 only): RP2040 data is 3.3 V, strips want ~5 V logic. Many “work”, but it’s marginal, especially when V drops. Use a 74AHCT125/74HCT14 (AHCT preferred). Nano is 5 V, so this isn’t needed there.  
-Ground reference for data: keep data and its ground bundled; don’t run data long by itself.  
+Ground reference for data: keep data and its ground bundled; don’t run data long by itself. 
+
+For Arduino (and similar):
+Recommended to add 10µF electrolytic capacitor between GND and Reset pin after uploading the code (minus to GND). This is to mute DTR pulse that OpenRGB sends to reset the microcontroller, 
+which is a problem because microcontroller will take few moments to boot up, 
+in which time OpenRGB has already given up since it didn't heard response from the microcontroller.
+There is already mitigation in the code, but no harm to add the electrolytic capacitor for backup. (Software is software, doing software things...)
 
 
 ## Troubleshooting
