@@ -29,7 +29,7 @@ Make sure FastLED library is installed.
 - Baud: `115200`
 - LED count: total number of LEDs in your script (e.g., `30`)
 - Protocol: **KeyboardVisualizer**
-4. Press “OK” and apply an effect. Your strip should light up!
+4. Press “SAVE” and apply an effect. Your strip should light up!
 
 **Protocol options**:
   - `KeyboardVisualizer`: expects packets starting with `0xAA`, followed by RGB buffer and checksum.
@@ -144,7 +144,12 @@ Ground reference for data: keep data and its ground bundled; don’t run data lo
 ## Troubleshooting
 
 Always check wiring! Bad cables are bad mmmkay!  
+Test with another usb cable.
 Make sure your microcontroller gets enough power.  
+
+### I did as asked and the leds do not react to OpenRGB:
+Close OpenRGB entirely, unplug and replug the usb, open OpenRGB.
+Might need to do couple of times for it to work. I don't know why.
 
 ### Microcontroller freezes randomly:
 if your microcontroller freezes during playback of LED animation: 
