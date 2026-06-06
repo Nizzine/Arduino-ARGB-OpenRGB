@@ -14,14 +14,12 @@ Important notice: I only learned this stuff by trial and error. I do not know ho
 - Arduino IDE and OpenRGB.
 - ARGB LED strips or computer fans/lights with ARGB connectors. 5 volts.
 - External 5 volt power supply.
-- For Arduino (and similar, not RPI) 10µF electrolytic capacitor between GND  and RESET pin (After uploading code) (minus to GND). 
 
 ## Quick Start for non-beginners
 
 Make sure FastLED library is installed.
 
 1. Flash the `NanoARGB.ino` sketch in this repo to your microcontroller using **Arduino IDE**.
-- For Arduino (and similar, not RPI) Recommended: 10µF electrolytic capacitor between GND and RESET pin (After uploading code) (minus to GND).
 3. Wire your LED strip(s):
 - Data pin → (Nano D2 or RP2040 pin)
 - Connect **common ground** between PSU, microcontroller, and LED strip(s)
@@ -142,12 +140,6 @@ Data line resistor: 330–470 Ω in series at the board DIN to tame ringing.
 Level shifting (RP2040 only): RP2040 data is 3.3 V, strips want ~5 V logic. Many “work”, but it’s marginal, especially when V drops. Use a 74AHCT125/74HCT14 (AHCT preferred). Nano is 5 V, so this isn’t needed there.  
 Ground reference for data: keep data and its ground bundled; don’t run data long by itself. 
 
-For Arduino (and similar):
-Recommended to add 10µF electrolytic capacitor between GND and Reset pin after uploading the code (minus to GND). This is to mute DTR pulse that OpenRGB sends to reset the microcontroller, 
-which is a problem because microcontroller will take few moments to boot up, 
-in which time OpenRGB has already given up since it didn't heard response from the microcontroller.
-There is already mitigation in the code, but no harm to add the electrolytic capacitor for backup. (Software is software, doing software things...)
-
 
 ## Troubleshooting
 
@@ -156,8 +148,7 @@ Test with another usb cable.
 Make sure your microcontroller gets enough power.  
 
 ### I did as asked and the leds do not react to OpenRGB:
-Close OpenRGB entirely, unplug and replug the usb, open OpenRGB.
-Might need to do couple of times for it to work. I don't know why.
+Replug usb and "rescan devices". if that doesn't work, close openrgb, replug, open openrgb again.
 
 ### Microcontroller freezes randomly:
 if your microcontroller freezes during playback of LED animation: 
